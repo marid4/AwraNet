@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran AWRANET</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background-color: #f0f2f5; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
+        .card-pay { background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%; max-width: 450px; overflow: hidden; }
+        .header-pay { background: linear-gradient(135deg, #0d6efd 0%, #0043a8 100%); padding: 30px; text-align: center; color: white; }
+        .qr-box { background: white; padding: 15px; border-radius: 15px; display: inline-block; margin-top: -40px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .qr-img { width: 100%; max-width: 250px; border-radius: 10px; }
+        .wallet-item { display: flex; align-items: center; justify-content: space-between; padding: 12px; border-bottom: 1px solid #f0f0f0; }
+        .wallet-item:last-child { border-bottom: none; }
+        .copy-btn { font-size: 0.8rem; padding: 3px 10px; border-radius: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="card-pay">
+        
+        <!-- Header -->
+        <div class="header-pay">
+            <h4 class="fw-bold mb-0"><i class="fas fa-wifi me-2"></i>AWRANET</h4>
+            <small class="opacity-75">Metode Pembayaran Online</small>
+            <div style="height: 30px;"></div> <!-- Spacer untuk QR -->
+        </div>
+
+        <!-- QR Code -->
+        <div class="text-center px-4 pb-4">
+            <div class="qr-box">
+                <!-- Pastikan file 'qris.jpg' ada di folder yang sama -->
+                <img src="qris.png" alt="QRIS Code" class="qr-img">
+                <div class="small fw-bold mt-2 text-secondary">Scan QRIS (Semua E-Wallet/Bank)</div>
+            </div>
+
+            <!-- List E-Wallet Manual -->
+            <div class="text-start mt-4">
+                <h6 class="fw-bold text-primary mb-3"><i class="fas fa-wallet me-2"></i>Transfer Manual</h6>
+                
+                <!-- DANA -->
+                <div class="wallet-item">
+                    <div>
+                        <div class="fw-bold text-dark">DANA</div>
+                        <div class="small text-muted" id="dana">085183113336</div>
+                    </div>
+                    <button class="btn btn-outline-primary btn-sm copy-btn" onclick="copyText('dana')">Salin</button>
+                </div>
+
+                <!-- OVO -->
+                <div class="wallet-item">
+                    <div>
+                        <div class="fw-bold text-dark">OVO</div>
+                        <div class="small text-muted" id="ovo">085183113336</div>
+                    </div>
+                    <button class="btn btn-outline-purple btn-sm copy-btn border-secondary text-secondary" onclick="copyText('ovo')">Salin</button>
+                </div>
+
+                <!-- SHOPEEPAY -->
+                <div class="wallet-item">
+                    <div>
+                        <div class="fw-bold text-dark">ShopeePay</div>
+                        <div class="small text-muted" id="spay">085183113336</div>
+                    </div>
+                    <button class="btn btn-outline-warning btn-sm copy-btn border-warning text-warning" onclick="copyText('spay')">Salin</button>
+                </div>
+            </div>
+
+            <!-- Konfirmasi -->
+            <div class="d-grid mt-4">
+                <a href="https://wa.me/6285183113336?text=Halo%20Admin%2C%20saya%20sudah%20melakukan%20pembayaran.%20Mohon%20dicek." 
+                   class="btn btn-success fw-bold py-2 rounded-pill">
+                    <i class="fab fa-whatsapp me-2"></i> Konfirmasi Pembayaran
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function copyText(elementId) {
+            var text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Nomor berhasil disalin!');
+            }, function(err) {
+                console.error('Gagal menyalin: ', err);
+            });
+        }
+    </script>
+
+</body>
+</html>
